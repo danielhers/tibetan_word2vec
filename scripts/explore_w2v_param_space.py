@@ -6,14 +6,15 @@ THREADS=31
 # ignore words repeated under threshold amount of times (0 = don't ignore any words)
 vocabulary_thresholds=[0,5]
 # word2vec prediction windows around each word
-windows = [7,9,5]
+windows = [8]
 # output vector dimension
-size = [300, 150]
+size = [300]
 # number of iterations
-iter = [1, 15]
+iter = [1, 5, 10]
 
 def main():
     for it in iter:
+        print('number of iters: '+str(iter))
         for sz in size:
             for win in windows:
                 for voc_th in vocabulary_thresholds:
