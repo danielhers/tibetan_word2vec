@@ -16,16 +16,13 @@ for it in iter:
 	for sz in size:
 		for win in windows:
 			for voc_th in vocabulary_thresholds:
-				os.makedirs('data/output/vocab_{vocab_thres}'.format(vocab_thres=vocab_thres), exist_ok=True)
-				cmd = "./word2vec/word2vec -train data/corpus.txt -output data/output/vocab_{vocab_thres}/vectors_window_{window}_size_{size}_iter_{iter}.bin -cbow 0 -size {size} -window {window} -negative 25 -hs 0 -sample 1e-4 -threads 12 -binary 1 -iter {iter} -save-vocab data/output/vocab_{vocab_thres}/vocab.txt -min-count {vocab_thres}".format(vocab_thres=, window=, size=, iter=)
-				retval = call(cmd.split())
-				if retval != 0:
-					print('An error has occured. Quitting.')
-					break
+                            outpath = 'data/output/vocab_{vocab_thres}'.format(vocab_thres=voc_th)
+                            if not os.path.exists(outpath):
+                                os.makedirs(outpath)
+			    cmd = "./word2vec/word2vec -train data/corpus.txt -output data/output/vocab_{vocab_thres}/vectors_window_{window}_size_{size}_iter_{iter}.bin -cbow 0 -size {size} -window {window} -negative 25 -hs 0 -sample 1e-4 -threads 12 -binary 1 -iter {iter} -save-vocab data/output/vocab_{vocab_thres}/vocab.txt -min-count {vocab_thres}".format(vocab_thres=voc_th, window=win, size=sz, iter=it)
+			    retval = call(cmd.split())
+			    if retval != 0:
+			    	print('An error has occured. Quitting.')
+				break
 
 
-#os.makedirs('data/output/vocab_{vocab_thres}'.format(vocab_thres=vocab_thres), exist_ok=True)
-#cmd = "./word2vec/word2vec -train data/corpus.txt -output data/output/vocab_{vocab_thres}/vectors_window_{window}_size_{size}_iter_{iter}.bin -cbow 0 -size {size} -window {window} -negative 25 -hs 0 -sample 1e-4 -threads 12 -binary 1 -iter {iter} -save-vocab data/output/vocab_{vocab_thres}/vocab.txt -min-count {vocab_thres}".format(vocab_thres=, window=, size=, iter=)
-#retval = call(cmd.split())
-#if retval != 0:
-#	print('An error has occured.')
