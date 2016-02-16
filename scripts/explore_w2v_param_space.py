@@ -4,13 +4,13 @@ from subprocess import call
 # run from root dir
 THREADS=31
 # ignore words repeated under threshold amount of times (0 = don't ignore any words)
-vocabulary_thresholds=[0,5]
+vocabulary_thresholds=[0,5,10]
 # word2vec prediction windows around each word
-windows = [8]
+windows = [8, 10]
 # output vector dimension
-size = [300]
+size = [152, 300]
 # number of iterations
-iter = [1, 5, 10]
+iter = [1, 5]
 
 def main():
     for it in iter:
