@@ -14,7 +14,7 @@ iter = [1, 5, 10]
 
 def main():
     for it in iter:
-        print('number of iters: '+str(iter))
+        print('number of iters: '+str(it))
         for sz in size:
             for win in windows:
                 for voc_th in vocabulary_thresholds:
