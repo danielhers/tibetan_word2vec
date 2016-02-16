@@ -5,11 +5,11 @@ import numpy as np
 import os
 import cPickle
 
-BENCHMARK_FILE = '../data/Wylie_tenses.txt'
+BENCHMARK_FILE = 'data/Wylie_tenses.txt'
 df = pandas.read_table(BENCHMARK_FILE)['<Wyl_Present>']
 
 models={}
-for root,_,files in os.walk('../data/output'):
+for root,_,files in os.walk('data/output'):
     for f in files:
         if f == 'vocab.txt':
             continue
@@ -32,4 +32,4 @@ if __name__ == '__main__':
         try:
             print_nn_wordlist(o.upper())
         except:
-        continue
+            continue
