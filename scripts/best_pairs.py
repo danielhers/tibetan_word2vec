@@ -12,7 +12,7 @@ def main():
                     word1 = fields[0]
                 elif len(fields) == 2:
                     word2, score = fields
-                    pairs.add((word1, word2, score))
+                    pairs.append((word1, word2, score))
                 else:
                     raise IOError("Wrong number of fields: " + " ".join(fields))
         with open(outpath + "/pairs_sorted.csv", "w") as f:
