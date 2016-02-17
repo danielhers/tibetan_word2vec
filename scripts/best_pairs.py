@@ -15,7 +15,7 @@ def main():
                     pairs.add((word1, word2, score))
                 else:
                     raise IOError("Wrong number of fields: " + " ".join(fields))
-        with open(outpath + "/pairs_sorted.txt", "w") as f:
+        with open(outpath + "/pairs_sorted.csv", "w") as f:
             f.writelines(",".join(p) + "\n" for p in sorted(
                 pairs, key=itemgetter(2), reverse=True))
         # My attempt to run the distance utility interactively from Python failed.
